@@ -6,7 +6,7 @@ public class ArrowBase : MonoBehaviour {
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.CompareTag("Enemy"))
+        if (col.gameObject.tag == ("Enemy"))
         {
             OnEnemyHit(col.gameObject);
         }
@@ -17,5 +17,5 @@ public class ArrowBase : MonoBehaviour {
 
     }
     
-    
+ 
 }

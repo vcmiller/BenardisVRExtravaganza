@@ -2,17 +2,17 @@
 using System.Collections;
 
 public class Train : MonoBehaviour {
-    Rigidbody rigidbody;
+    Rigidbody rb;
     public float speed;
 
 	// Use this for initialization
 	void Start () {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        rigidbody.velocity = transform.forward*speed;
+        rb.velocity = transform.forward*speed;
 
     }
 }
