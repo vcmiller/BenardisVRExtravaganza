@@ -12,23 +12,34 @@ public class HorseControl : MonoBehaviour {
     public float featherFactor = 0.1f;
     public float groundDetectDist = 1f;
 
+    public float moveThreshold = .2f;
+
     public bool isAirborne { get; private set; }
 
-    Vector3 camAngles = new Vector3(0, 0, 0);
+    Vector3 camAngles = new Vector3(0, 180, 0);
+    Animator animator;
+
+    private CapsuleCollider capsule;
 
     // Use this for initialization
     void Start () {
         cam = GetComponentInChildren<Camera>().transform;
         rb = GetComponent<Rigidbody>();
-	}
+
+        camAngles = cam.eulerAngles;
+        animator = GetComponent<Animator>();
+        capsule = GetComponent<CapsuleCollider>();
+    }
 	
 	// Update is called once per frame]
     void Update()
     {
         CameraControls();
         JumpControls();
-        rb.AddForce(Vector3.ProjectOnPlane(cam.transform.forward, transform.up) * speed * Input.GetAxis("Vertical"), ForceMode.VelocityChange);
+        rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, transform.up) * speed * Mathf.Max(Input.GetAxis("Vertical"), 0), ForceMode.VelocityChange);
+        
 
+        animator.SetBool("Running", !isAirborne && Input.GetAxis("Vertical") > .5);
     }
 
     void CameraControls()
@@ -46,13 +57,26 @@ public class HorseControl : MonoBehaviour {
 
         camAngles = cam.eulerAngles;
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up), Vector3.up), sensitivity * Mathf.Abs(Input.GetAxis("Vertical")));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(-cam.forward, Vector3.up), Vector3.up), sensitivity * Mathf.Abs(Input.GetAxis("Vertical")));
 
     }
 
     void JumpControls()
     {
-        isAirborne = !Physics.Raycast(transform.position, -transform.up, groundDetectDist);
+        Vector3 capsuleOrigin = capsule.transform.TransformPoint(capsule.center);
+
+        RaycastHit hit;
+        isAirborne = !Physics.SphereCast(capsuleOrigin, capsule.radius, Vector3.down, out hit, groundDetectDist + capsule.height / 2);
+        animator.SetBool("Jumping", isAirborne);
+
+        if (!isAirborne)
+        {
+            Rigidbody otherBody = hit.transform.root.GetComponent<Rigidbody>();
+            if (otherBody)
+            {
+                rb.AddForce(otherBody.velocity, ForceMode.Acceleration);
+            }
+        }
 
         if (!isAirborne && Input.GetButtonDown("Jump"))
         {
