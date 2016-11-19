@@ -27,22 +27,18 @@ public class Bow : MonoBehaviour {
             }
             nocked.transform.rotation = Quaternion.LookRotation(notch - nocked.transform.position);
         }
-        
-	}
 
-    void NockReleaseSpinLock()
-    {
-        if(hand.grabbing != lastGrabState)
+        if(Vector3.Distance(notch, hand.toGrab.position) <= 0.3f)
         {
-            if (lastGrabState) {
-                Nock(hand.toGrab.GetComponent<ArrowBase>());
-            } else {
-                Release();
-            }
+            Nock(hand.toGrab.GetComponent<ArrowBase>());
+        }
 
-            lastGrabState = !lastGrabState;
+        if (nocked && !hand.grabbing)
+        {
+            Release();
         }
     }
+ 
 
     void Nock(ArrowBase ab)
     {
