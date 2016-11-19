@@ -1,0 +1,275 @@
+fileFormatVersion: 2
+guid: 8324b49c6bbc9ca44aa6f4af43fe1196
+timeCreated: 1479583465
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: arm_lower_l
+    100002: arm_lower_r
+    100004: arm_upper_l
+    100006: arm_upper_r
+    100008: chest
+    100010: foot1_l
+    100012: foot1_r
+    100014: foot2_l
+    100016: foot2_r
+    100018: foot_ik_l
+    100020: foot_ik_r
+    100022: front_leg1_l
+    100024: front_leg1_r
+    100026: front_leg2_l
+    100028: front_leg2_r
+    100030: front_leg3_l
+    100032: front_leg3_r
+    100034: hand_l
+    100036: hand_r
+    100038: head
+    100040: hind_leg1_l
+    100042: hind_leg1_r
+    100044: hind_leg2_l
+    100046: hind_leg2_r
+    100048: hind_leg3_l
+    100050: hind_leg3_r
+    100052: Horse
+    100054: HorseRig
+    100056: jaw
+    100058: knee_pole_l
+    100060: knee_pole_r
+    100062: leg_lower_l
+    100064: leg_lower_r
+    100066: leg_upper_l
+    100068: leg_upper_r
+    100070: neck1
+    100072: neck2
+    100074: neck3
+    100076: neck4
+    100078: root
+    100080: shoulder_l
+    100082: shoulder_r
+    100084: skel_head
+    100086: skel_root
+    100088: Skeleton
+    100090: //RootNode
+    100092: SkeletonRig
+    100094: tail1
+    100096: tail2
+    100098: torso
+    100100: torso1
+    100102: torso2
+    100104: torso3
+    400000: arm_lower_l
+    400002: arm_lower_r
+    400004: arm_upper_l
+    400006: arm_upper_r
+    400008: chest
+    400010: foot1_l
+    400012: foot1_r
+    400014: foot2_l
+    400016: foot2_r
+    400018: foot_ik_l
+    400020: foot_ik_r
+    400022: front_leg1_l
+    400024: front_leg1_r
+    400026: front_leg2_l
+    400028: front_leg2_r
+    400030: front_leg3_l
+    400032: front_leg3_r
+    400034: hand_l
+    400036: hand_r
+    400038: head
+    400040: hind_leg1_l
+    400042: hind_leg1_r
+    400044: hind_leg2_l
+    400046: hind_leg2_r
+    400048: hind_leg3_l
+    400050: hind_leg3_r
+    400052: Horse
+    400054: HorseRig
+    400056: jaw
+    400058: knee_pole_l
+    400060: knee_pole_r
+    400062: leg_lower_l
+    400064: leg_lower_r
+    400066: leg_upper_l
+    400068: leg_upper_r
+    400070: neck1
+    400072: neck2
+    400074: neck3
+    400076: neck4
+    400078: root
+    400080: shoulder_l
+    400082: shoulder_r
+    400084: skel_head
+    400086: skel_root
+    400088: Skeleton
+    400090: //RootNode
+    400092: SkeletonRig
+    400094: tail1
+    400096: tail2
+    400098: torso
+    400100: torso1
+    400102: torso2
+    400104: torso3
+    4300000: Horse
+    4300002: Skeleton
+    7400000: Default Take
+    7400002: HorseRun
+    7400004: SkeletonRide
+    9500000: //RootNode
+    13700000: Horse
+    13700002: Skeleton
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: SkeletonRide
+      takeName: SkeletonRide
+      firstFrame: -1
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Skeleton
+        weight: 1
+      - path: SkeletonRig
+        weight: 1
+      - path: SkeletonRig/foot_ik_l
+        weight: 1
+      - path: SkeletonRig/foot_ik_l/knee_pole_l
+        weight: 1
+      - path: SkeletonRig/foot_ik_r
+        weight: 1
+      - path: SkeletonRig/foot_ik_r/knee_pole_r
+        weight: 1
+      - path: SkeletonRig/skel_root
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_l
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_l/leg_lower_l
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_l/leg_lower_l/foot1_l
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_l/leg_lower_l/foot1_l/foot2_l
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_r
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_r/leg_lower_r
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_r/leg_lower_r/foot1_r
+        weight: 1
+      - path: SkeletonRig/skel_root/leg_upper_r/leg_lower_r/foot1_r/foot2_r
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/neck1
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/neck1/neck2
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/neck1/neck2/skel_head
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/neck1/neck2/skel_head/jaw
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_l
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_l/arm_upper_l
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_l/arm_upper_l/arm_lower_l
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_l/arm_upper_l/arm_lower_l/hand_l
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_r
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_r/arm_upper_r
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_r/arm_upper_r/arm_lower_r
+        weight: 1
+      - path: SkeletonRig/skel_root/torso1/torso2/torso3/shoulder_r/arm_upper_r/arm_lower_r/hand_r
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
