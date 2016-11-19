@@ -3,39 +3,53 @@ using System.Collections;
 
 public class Bow : MonoBehaviour {
 
-    public Vector3 notch;
+    Transform notchObj;
+    public Vector3 notch
+    {
+        get
+        {
+            return notchObj.position;
+        }
+
+    }
+
+    public float arrowMagnetism = 0.3f;
     public float maxArrowDistance;
     public float maxVelocity;
     ArrowBase nocked;
     ArrowHand hand;
 
-    bool lastGrabState;
-
     // Use this for initialization
     void Start () {
         hand = FindObjectOfType<ArrowHand>();
-        lastGrabState = false;
+        notchObj = transform.GetChild(0);
+        nocked = null;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (nocked)
         {
-            if (Vector3.Distance(notch, nocked.transform.position) > maxArrowDistance)
+
+            nocked.transform.position = notch + Mathf.Min(Vector3.Distance(notch, nocked.transform.position), maxArrowDistance) * -transform.forward;// Vector3.Cross(nocked.transform.localPosition, transform.up);
+            nocked.transform.LookAt(notchObj);
+
+            if (!hand.inputGrab)
             {
-                nocked.transform.position = (nocked.transform.position - notch).normalized * maxArrowDistance;
+                print("releasing");
+                Release();
             }
-            nocked.transform.rotation = Quaternion.LookRotation(notch - nocked.transform.position);
         }
-
-        if(Vector3.Distance(notch, hand.toGrab.position) <= 0.3f)
+        else
         {
-            Nock(hand.toGrab.GetComponent<ArrowBase>());
-        }
 
-        if (nocked && !hand.grabbing)
-        {
-            Release();
+            if (hand && hand.toGrab && Vector3.Distance(notch, hand.toGrab.position) <= arrowMagnetism)
+            {
+                print(hand.toGrab.name);
+                Nock(hand.toGrab.GetComponent<ArrowBase>());
+            }
+
+
         }
     }
  
@@ -47,6 +61,9 @@ public class Bow : MonoBehaviour {
 
     void Release()
     {
+        nocked.GetComponent<Rigidbody>().isKinematic = false;
+
         nocked.GetComponent<Rigidbody>().velocity = transform.forward * maxVelocity * (Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance);
+        nocked = null;
     }
 }
