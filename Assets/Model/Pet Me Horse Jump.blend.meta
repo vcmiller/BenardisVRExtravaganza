@@ -1,0 +1,196 @@
+fileFormatVersion: 2
+guid: a8cc62d6136659b4dbb0e733efaa2220
+timeCreated: 1479587518
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: chest
+    100002: front_leg1_l
+    100004: front_leg1_r
+    100006: front_leg2_l
+    100008: front_leg2_r
+    100010: front_leg3_l
+    100012: front_leg3_r
+    100014: head
+    100016: hind_leg1_l
+    100018: hind_leg1_r
+    100020: hind_leg2_l
+    100022: hind_leg2_r
+    100024: hind_leg3_l
+    100026: hind_leg3_r
+    100028: Horse
+    100030: HorseRig
+    100032: neck1
+    100034: neck2
+    100036: //RootNode
+    100038: root
+    100040: tail1
+    100042: tail2
+    100044: torso
+    400000: chest
+    400002: front_leg1_l
+    400004: front_leg1_r
+    400006: front_leg2_l
+    400008: front_leg2_r
+    400010: front_leg3_l
+    400012: front_leg3_r
+    400014: head
+    400016: hind_leg1_l
+    400018: hind_leg1_r
+    400020: hind_leg2_l
+    400022: hind_leg2_r
+    400024: hind_leg3_l
+    400026: hind_leg3_r
+    400028: Horse
+    400030: HorseRig
+    400032: neck1
+    400034: neck2
+    400036: //RootNode
+    400038: root
+    400040: tail1
+    400042: tail2
+    400044: torso
+    4300000: Horse
+    7400000: Default Take
+    7400002: HorseJump
+    9500000: //RootNode
+    13700000: Horse
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: HorseJump
+      takeName: HorseJump
+      firstFrame: -1
+      lastFrame: 8
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Horse
+        weight: 1
+      - path: HorseRig
+        weight: 1
+      - path: HorseRig/root
+        weight: 1
+      - path: HorseRig/root/chest
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_l
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_l/front_leg2_l
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_l/front_leg2_l/front_leg3_l
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_r
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_r/front_leg2_r
+        weight: 1
+      - path: HorseRig/root/chest/front_leg1_r/front_leg2_r/front_leg3_r
+        weight: 1
+      - path: HorseRig/root/chest/neck1
+        weight: 1
+      - path: HorseRig/root/chest/neck1/neck2
+        weight: 1
+      - path: HorseRig/root/chest/neck1/neck2/head
+        weight: 1
+      - path: HorseRig/root/torso
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_l
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_l/hind_leg2_l
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_l/hind_leg2_l/hind_leg3_l
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_r
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_r/hind_leg2_r
+        weight: 1
+      - path: HorseRig/root/torso/hind_leg1_r/hind_leg2_r/hind_leg3_r
+        weight: 1
+      - path: HorseRig/root/torso/tail1
+        weight: 1
+      - path: HorseRig/root/torso/tail1/tail2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

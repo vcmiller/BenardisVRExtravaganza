@@ -12,23 +12,34 @@ public class HorseControl : MonoBehaviour {
     public float featherFactor = 0.1f;
     public float groundDetectDist = 1f;
 
+    public float moveThreshold = .2f;
+
     public bool isAirborne { get; private set; }
 
-    Vector3 camAngles = new Vector3(0, 0, 0);
+    Vector3 camAngles = new Vector3(0, 180, 0);
+    Animator animator;
 
     // Use this for initialization
     void Start () {
         cam = GetComponentInChildren<Camera>().transform;
         rb = GetComponent<Rigidbody>();
-	}
+
+        camAngles = cam.eulerAngles;
+        animator = GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame]
     void Update()
     {
         CameraControls();
         JumpControls();
-        rb.AddForce(Vector3.ProjectOnPlane(cam.transform.forward, transform.up) * speed * Input.GetAxis("Vertical"), ForceMode.VelocityChange);
+        if (!isAirborne)
+        {
 
+            rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, transform.up) * speed * Input.GetAxis("Vertical"), ForceMode.VelocityChange);
+        }
+
+        animator.SetBool("Running", rb.velocity.sqrMagnitude > moveThreshold * moveThreshold);
     }
 
     void CameraControls()
@@ -46,13 +57,14 @@ public class HorseControl : MonoBehaviour {
 
         camAngles = cam.eulerAngles;
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(cam.forward, Vector3.up), Vector3.up), sensitivity * Mathf.Abs(Input.GetAxis("Vertical")));
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(-cam.forward, Vector3.up), Vector3.up), sensitivity * Mathf.Abs(Input.GetAxis("Vertical")));
 
     }
 
     void JumpControls()
     {
         isAirborne = !Physics.Raycast(transform.position, -transform.up, groundDetectDist);
+        animator.SetBool("Jumping", isAirborne);
 
         if (!isAirborne && Input.GetButtonDown("Jump"))
         {
