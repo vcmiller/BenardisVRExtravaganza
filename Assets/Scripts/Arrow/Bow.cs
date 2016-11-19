@@ -63,7 +63,9 @@ public class Bow : MonoBehaviour {
     {
         nocked.GetComponent<Rigidbody>().isKinematic = false;
 
-        nocked.GetComponent<Rigidbody>().velocity = transform.forward * maxVelocity * (Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance);
+        Rigidbody rb = transform.root.GetComponent<Rigidbody>();
+
+        nocked.GetComponent<Rigidbody>().velocity = rb.velocity + transform.forward * maxVelocity * (Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance);
         nocked = null;
     }
 }

@@ -8,6 +8,8 @@ public class HorseControl : MonoBehaviour {
 
     public float sensitivity = 1f;
     public float speed = 1f;
+    public float reverseSpeed = -0.5f;
+
     public float jumpSpeed = 10f;
     public float featherFactor = 0.1f;
     public float groundDetectDist = 1f;
@@ -20,6 +22,7 @@ public class HorseControl : MonoBehaviour {
     Animator animator;
 
     private CapsuleCollider capsule;
+    public Transform cameraRig;
 
     // Use this for initialization
     void Start () {
@@ -29,6 +32,8 @@ public class HorseControl : MonoBehaviour {
         camAngles = cam.eulerAngles;
         animator = GetComponent<Animator>();
         capsule = GetComponent<CapsuleCollider>();
+
+        cameraRig = GetComponentInChildren<SteamVR_PlayArea>().transform;
     }
 	
 	// Update is called once per frame]
@@ -36,10 +41,12 @@ public class HorseControl : MonoBehaviour {
     {
         CameraControls();
         JumpControls();
-        rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, transform.up) * speed * Mathf.Max(Input.GetAxis("Vertical"), 0), ForceMode.VelocityChange);
+        rb.AddForce(Vector3.ProjectOnPlane(-transform.forward, transform.up) * speed * Mathf.Max(Input.GetAxis("Vertical"), reverseSpeed), ForceMode.VelocityChange);
         
 
         animator.SetBool("Running", !isAirborne && Input.GetAxis("Vertical") > .5);
+
+        cameraRig.transform.rotation = Quaternion.identity;
     }
 
     void CameraControls()
