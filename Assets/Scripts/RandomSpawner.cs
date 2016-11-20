@@ -19,6 +19,8 @@ public class RandomSpawner : MonoBehaviour {
     public float scaleMin = 1;
     public float scaleMax = 1;
 
+    public bool randomRot = true;
+
     // Use this for initialization
     void Start()
     {
@@ -37,7 +39,7 @@ public class RandomSpawner : MonoBehaviour {
 
         if (timeUntilNextSpawn < 0)
         {
-            GameObject obj = (GameObject) Instantiate(prefab, new Vector3(Random.Range(minx, maxx), transform.position.y, player.position.z + spawnOffset), Quaternion.Euler(0, Random.Range(0, 360), 0));
+            GameObject obj = (GameObject) Instantiate(prefab, new Vector3(Random.Range(minx, maxx), transform.position.y, player.position.z + spawnOffset), randomRot ? Quaternion.Euler(0, Random.Range(0, 360), 0) : Quaternion.identity);
             float f = Random.Range(scaleMin, scaleMax);
             obj.transform.localScale = new Vector3(f, f, f);
 
