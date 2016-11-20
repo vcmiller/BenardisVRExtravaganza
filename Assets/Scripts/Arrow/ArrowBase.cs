@@ -3,10 +3,11 @@ using System.Collections;
 
 public class ArrowBase : MonoBehaviour {
 
+    public Vector3 forwardVector;
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == ("Enemy"))
+        if (col.GetComponent<Enemy>())
         {
             OnEnemyHit(col.gameObject);
         }

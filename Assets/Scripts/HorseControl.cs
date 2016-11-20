@@ -3,7 +3,7 @@ using System.Collections;
 
 public class HorseControl : MonoBehaviour {
 
-    Transform cam;
+    public Transform cam;
     Rigidbody rb;
 
     public float sensitivity = 1f;
@@ -26,7 +26,6 @@ public class HorseControl : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        cam = GetComponentInChildren<Camera>().transform;
         rb = GetComponent<Rigidbody>();
 
         camAngles = cam.eulerAngles;
