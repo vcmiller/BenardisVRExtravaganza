@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 public class Bow : MonoBehaviour {
+    AudioSource src;
+    public AudioClip[] shootSounds;
+
     Transform target;
 
     Transform notchObj;
@@ -36,6 +39,7 @@ public class Bow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         lr.enabled = nocked;
+        src.enabled = nocked;
         if (nocked)
         {
             nocked.transform.position = notch + Mathf.Min(Vector3.Distance(notch, nocked.transform.position), maxArrowDistance) * -notchObj.forward;// Vector3.Cross(nocked.transform.localPosition, transform.up);
@@ -45,6 +49,11 @@ public class Bow : MonoBehaviour {
             {
                 Release();
             }
+
+            src.volume = NockedPotentialVelocity() / maxVelocity;
+            src.pitch = NockedPotentialVelocity() / maxVelocity;
+
+            SteamVR_Controller.Input(0).TriggerHapticPulse();
 
             ParabolicCast();
         }
@@ -129,6 +138,8 @@ public class Bow : MonoBehaviour {
 
     void Release()
     {
+        AudioSource.PlayClipAtPoint(shootSounds[Random.Range(0, shootSounds.Length)], transform.position);
+
         nocked.GetComponent<Rigidbody>().isKinematic = false;
 
         Rigidbody rb = transform.root.GetComponent<Rigidbody>();

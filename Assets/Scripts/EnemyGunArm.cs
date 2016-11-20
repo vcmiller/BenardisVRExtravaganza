@@ -7,6 +7,8 @@ public class EnemyGunArm : MonoBehaviour {
     public CooldownTimer shootTimer;
     private Rigidbody playerRoot;
 
+    public AudioClip[] gunSounds;
+
     void Start()
     {
         player = FindObjectOfType<SteamVR_Camera>().transform;
@@ -17,7 +19,7 @@ public class EnemyGunArm : MonoBehaviour {
     {
         if (shootTimer.Use)
         {
-
+            AudioSource.PlayClipAtPoint(gunSounds[Random.Range(0, gunSounds.Length)], transform.position);
             Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(-transform.right, Vector3.up));
         }
     }

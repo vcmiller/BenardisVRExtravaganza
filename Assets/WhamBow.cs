@@ -3,6 +3,7 @@ using System.Collections;
 
 public class WhamBow : MonoBehaviour {
 
+    public AudioClip[] hitSounds;
 
     void OnTriggerEnter(Collider col)
     {
@@ -19,6 +20,7 @@ public class WhamBow : MonoBehaviour {
 
     protected virtual void OnEnemyHit(Enemy en)
     {
+        AudioSource.PlayClipAtPoint(hitSounds[Random.Range(0, hitSounds.Length)], transform.position);
         en.kill = true;
     }
 
