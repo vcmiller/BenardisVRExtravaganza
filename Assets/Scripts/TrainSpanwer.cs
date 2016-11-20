@@ -2,10 +2,12 @@
 using System.Collections;
 
 public class TrainSpanwer : MonoBehaviour {
+
     private Transform player;
 
     public GameObject locomotive;
     public GameObject car;
+    public GameObject skelly;
 
     public int maxLength;
     public int minLength;
@@ -56,6 +58,7 @@ public class TrainSpanwer : MonoBehaviour {
         train.speed = -speed;
 
         int numCars = Random.Range(minLength, maxLength);
+        float skellySpawnChance = 1f;
 
         for (int i = 1; i < numCars; i++)
         {
@@ -64,6 +67,12 @@ public class TrainSpanwer : MonoBehaviour {
             Transform train2 = ((GameObject)Instantiate(car, pos, Quaternion.LookRotation(dir, Vector3.up))).transform;
 
             train2.transform.parent = train.transform;
+
+            if(Random.value < skellySpawnChance)
+            {
+                Instantiate(skelly, train2.position + Vector3.up, Quaternion.identity);
+                skellySpawnChance /= 2;
+            }
         }
     }
 }

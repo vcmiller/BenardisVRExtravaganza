@@ -44,7 +44,7 @@ public class Bow : MonoBehaviour {
         if (nocked)
         {
             nocked.transform.position = notch + Mathf.Min(Vector3.Distance(notch, nocked.transform.position), maxArrowDistance) * -notchObj.forward;// Vector3.Cross(nocked.transform.localPosition, transform.up);
-            nocked.transform.up = notch - nocked.transform.position;
+            nocked.transform.forward = -transform.forward;
 
             if (!hand.inputGrab)
             {

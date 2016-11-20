@@ -22,7 +22,11 @@ public class Spectre : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        bow = FindObjectOfType<Bow>();
+        if (!bow)
+        {
+
+            bow = FindObjectOfType<Bow>();
+        }
         if (bow && bow.nocked)
         {
             spectre.SetActive(true);

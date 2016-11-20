@@ -26,6 +26,7 @@ public class Quiver : MonoBehaviour {
     {
         arrow = (GameObject)Instantiate(selection[Random.Range(0, selection.Length)].gameObject, transform, false);
         arrow.GetComponent<Rigidbody>().isKinematic = true;
-        arrow.transform.localScale = Vector3.one;
+        arrow.transform.localPosition = Vector3.zero;
+        arrow.transform.localRotation = Quaternion.identity;
     }
 }

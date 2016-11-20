@@ -29,6 +29,7 @@ public class PlayersShouldDie : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
+        print(health);
         if (col.CompareTag("Bullet"))
         {
             health -= 1;
