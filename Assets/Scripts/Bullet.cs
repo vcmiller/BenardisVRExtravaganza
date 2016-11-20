@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        player = FindObjectOfType<SteamVR_Camera>().transform;
+        player = FindObjectOfType<HorseControl>().transform;
 	}
 	
 	// Update is called once per frame
