@@ -34,6 +34,7 @@ public class Bow : MonoBehaviour {
         lr = GetComponent<LineRenderer>();
         lr.SetVertexCount(51);
         nocked = null;
+        src = gameObject.AddComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame

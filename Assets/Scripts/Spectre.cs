@@ -23,7 +23,7 @@ public class Spectre : MonoBehaviour {
 	void Update ()
     {
         bow = FindObjectOfType<Bow>();
-        if (bow.nocked)
+        if (bow && bow.nocked)
         {
             spectre.SetActive(true);
 
