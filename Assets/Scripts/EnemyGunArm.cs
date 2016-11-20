@@ -7,6 +7,8 @@ public class EnemyGunArm : MonoBehaviour {
     public CooldownTimer shootTimer;
     private Rigidbody playerRoot;
 
+    public float range = 100;
+
     public AudioClip[] gunSounds;
 
     void Start()

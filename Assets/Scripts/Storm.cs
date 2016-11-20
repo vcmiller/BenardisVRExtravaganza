@@ -9,6 +9,7 @@ public class Storm : MonoBehaviour {
 	void Start () {
         player = FindObjectOfType<HorseControl>().transform;
         offset = transform.position - player.position;
+        offset.z = 0;
 	}
 	
 	// Update is called once per frame
