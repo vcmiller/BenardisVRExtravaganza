@@ -22,5 +22,6 @@ public class Enemy : MonoBehaviour {
     {
         Instantiate(ragdollPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
+        Destroy(GetComponentInParent<Spectre>());
     }
 }

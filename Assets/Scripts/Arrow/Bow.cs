@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 public class Bow : MonoBehaviour {
+    Transform target;
 
     Transform notchObj;
     public Vector3 notch
@@ -16,7 +17,10 @@ public class Bow : MonoBehaviour {
     public float arrowMagnetism = 0.3f;
     public float maxArrowDistance;
     public float maxVelocity;
-    ArrowBase nocked;
+    public ArrowBase nocked
+    {
+        get; private set;
+    }
     ArrowHand hand;
     LineRenderer lr;
 
@@ -63,20 +67,30 @@ public class Bow : MonoBehaviour {
             return;
         }
 
-        List<RaycastHit2D> lrHits;
+        List<RaycastHit> lrHits;
         List<Vector3> lrPoints;
 
         Rigidbody rb = transform.root.GetComponent<Rigidbody>();
-        GetArcHits(out lrHits, out lrPoints, 0, notch, notchObj.forward * NockedPotentialVelocity(), Physics.gravity, 0.25f, 1f);
+        GetArcHits(out lrHits, out lrPoints, notch, notchObj.forward * NockedPotentialVelocity(), Physics.gravity, 0.25f, 1f);
+
+        target = null;
+        foreach (RaycastHit hit in lrHits)
+        {
+            if (hit.transform.root.GetComponentInChildren<Enemy>())
+            {
+                target = hit.transform;
+            }
+        }
+
 
         lr.SetVertexCount(lrPoints.Count);
         lr.SetPositions(lrPoints.ToArray());
         
     }
 
-    public static void GetArcHits(out List<RaycastHit2D> Hits, out List<Vector3> Points, int iLayerMask, Vector3 vStart, Vector3 vVelocity, Vector3 vAcceleration, float fTimeStep = 0.05f, float fMaxtime = 10f, bool bIncludeUnits = false, bool bDebugDraw = false)
+    public static void GetArcHits(out List<RaycastHit> Hits, out List<Vector3> Points, Vector3 vStart, Vector3 vVelocity, Vector3 vAcceleration, float fTimeStep = 0.05f, float fMaxtime = 10f, bool bIncludeUnits = false, bool bDebugDraw = false)
     {
-        Hits = new List<RaycastHit2D>();
+        Hits = new List<RaycastHit>();
         Points = new List<Vector3>();
 
         Vector3 prev = vStart;
@@ -88,10 +102,10 @@ public class Bow : MonoBehaviour {
             if (t > fMaxtime) break;
             Vector3 pos = PlotTrajectoryAtTime(vStart, vVelocity, vAcceleration, t);
 
-            var result = Physics2D.Linecast(prev, pos, iLayerMask);
-            if (result.collider != null)
+            RaycastHit hit;
+            if (Physics.Linecast(prev, pos, out hit))
             {
-                Hits.Add(result);
+                Hits.Add(hit);
                 Points.Add(pos);
                 break;
             }
@@ -119,11 +133,15 @@ public class Bow : MonoBehaviour {
 
         Rigidbody rb = transform.root.GetComponent<Rigidbody>();
 
-        nocked.GetComponent<Rigidbody>().velocity = rb.velocity + transform.forward * NockedPotentialVelocity();
+        nocked.GetComponent<Rigidbody>().velocity = transform.forward * NockedPotentialVelocity(); //rb.velocity
+
+        nocked.GetComponent<ArrowHoming>().target = target;
+        
+
         nocked = null;
     }
 
-    float NockedPotentialVelocity()
+    public float NockedPotentialVelocity()
     {
         if (!nocked) { return 0; }
         return maxVelocity * Mathf.Pow(Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance, 4);

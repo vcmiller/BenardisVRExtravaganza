@@ -14,10 +14,18 @@ public class MatrixMode : MonoBehaviour {
             {
                 foreach(GameObject go in GameObject.FindGameObjectsWithTag(curTag))
                 {
-                    if(Vector3.Distance(go.transform.position, transform.position) <= minProximity && Vector3.Dot(go.transform.forward, transform.position - go.transform.position) > 0)
+                    RaycastHit hit;
+                    if (Physics.Raycast(go.transform.position, go.GetComponent<Rigidbody>().velocity, out hit))
                     {
-                        return true;
-                    } 
+                        if (hit.transform.root.GetComponentInChildren<HorseControl>())
+                        {
+                            if (Vector3.Distance(go.transform.position, transform.position) <= minProximity)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                    
                 }
             }
             return false;
