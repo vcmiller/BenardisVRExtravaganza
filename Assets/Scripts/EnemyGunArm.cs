@@ -8,7 +8,7 @@ public class EnemyGunArm : MonoBehaviour {
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = FindObjectOfType<SteamVR_Camera>().transform;
     }
 
     void Update()
