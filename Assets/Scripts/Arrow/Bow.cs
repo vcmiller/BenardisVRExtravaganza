@@ -67,7 +67,7 @@ public class Bow : MonoBehaviour {
         List<Vector3> lrPoints;
 
         Rigidbody rb = transform.root.GetComponent<Rigidbody>();
-        GetArcHits(out lrHits, out lrPoints, 0, notch, rb.velocity + notchObj.forward * NockedPotentialVelocity(), Physics.gravity, 0.25f, 30f);
+        GetArcHits(out lrHits, out lrPoints, 0, notch, notchObj.forward * NockedPotentialVelocity(), Physics.gravity, 0.25f, 1f);
 
         lr.SetVertexCount(lrPoints.Count);
         lr.SetPositions(lrPoints.ToArray());
@@ -126,6 +126,6 @@ public class Bow : MonoBehaviour {
     float NockedPotentialVelocity()
     {
         if (!nocked) { return 0; }
-        return maxVelocity * Mathf.Pow(Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance, 2);
+        return maxVelocity * Mathf.Pow(Vector3.Distance(notch, nocked.transform.position) / maxArrowDistance, 4);
     }
 }
